@@ -1,0 +1,25 @@
+@use '../../utils/sass/functions' as *;
+@use '../../utils/sass/variables' as *;
+
+.container {
+  padding: rem(7px) rem(10px);
+  display: flex;
+  align-items: center;
+  gap: rem(5px);
+}
+
+.text_container {
+  max-width: rem(310px);
+}
+
+.upper_text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last_message {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

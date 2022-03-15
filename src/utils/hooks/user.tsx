@@ -1,51 +1,49 @@
-import { useState, useEffect } from "react";
-import { User } from "../../types/user";
+import { useState, useEffect } from 'react';
+import { User } from '../../types/user';
 
 export const useGetUsers = (url: string) => {
-  const [users, setUsers] = useState<User[]>([])
-  const [isLoading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch(url)
-      const data = await response.json()
-      setUsers(data)
+        const response = await fetch(url);
+        const data = await response.json();
+        setUsers(data);
+      } catch {
+        setError(true);
       }
-      catch {
-        setError(true)
-      }
-    }
-    fetchData()
-    setLoading(false)
-  }, [url])
+    };
+    fetchData();
+    setLoading(false);
+  }, [url]);
 
-  return { users, isLoading, error }
-}
+  return { users, isLoading, error };
+};
 
 export const useGetUser = (url: string) => {
-  const [user, setUser] = useState<User>()
-  const [isLoading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [user, setUser] = useState<User>();
+  const [userLoading, setUserLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true)
+    setUserLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch(url)
-        const data = await response.json()
-        setUser(data)
-      }
-      catch (error) {
+        const response = await fetch(url);
+        const data = await response.json();
+        setUser(data);
+      } catch (error) {
         console.log(error);
-        setError(true)
+        setError(true);
       }
-    }
-    fetchData()
-    setLoading(false)
-  }, [url])
+    };
+    fetchData();
+    setUserLoading(false);
+  }, [url]);
 
-  return { user, isLoading, error }
-}
+  return { user, userLoading, error };
+};
