@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+// Unit converter from px to rem or em
+
+@function stripUnit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@function em($pxValue) {
+  @return #{math.div(stripUnit($pxValue), 16)}em;
+}
+
+@function rem($pxValue) {
+  @return #{math.div(stripUnit($pxValue), 16)}rem;
+}
