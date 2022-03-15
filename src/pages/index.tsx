@@ -30,14 +30,13 @@ const Home: FC = () => {
           content="L'application de messagerie de Leboncoin, retrouvez ici tous vos messages !"
         ></meta>
       </Head>
-      <Header /> {/*MOVE HEADER IN A LAYOUT COMPONENT*/}
-      <h1>Messages</h1>
+      <Header homepage /> {/*MOVE HEADER IN A LAYOUT COMPONENT*/}
       <div>
         {conversations.map(({ id, senderNickname, recipientNickname }) => {
           return (
             <Conversation
               key={id}
-              convsersationId={id}
+              conversationId={id}
               currentUserName={currentUser?.nickname}
               senderName={senderNickname}
               recipientName={recipientNickname}

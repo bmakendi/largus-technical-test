@@ -2,9 +2,10 @@
 @use '../../utils/sass/variables' as *;
 
 .container {
-  padding: rem(15px) rem(13px);
+  z-index: 1000;
+  padding: rem(20px) rem(13px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: $headerBgColor;
+  border-bottom: 1px solid $lightGrey;
 }
