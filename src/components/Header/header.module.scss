@@ -4,8 +4,16 @@
 .container {
   z-index: 1000;
   padding: rem(20px) rem(13px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   background-color: $headerBgColor;
   border-bottom: 1px solid $lightGrey;
+  p {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
 }

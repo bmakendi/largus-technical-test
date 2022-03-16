@@ -35,6 +35,7 @@ const Conversation = ({
             className='conversation_picture'
             height={35}
             width={35}
+            layout='fixed'
           />
           <div className={styles.text_container}>
             <div className={styles.upper_text}>

@@ -1,0 +1,22 @@
+@use '../../utils/sass/functions' as *;
+@use '../../utils/sass/variables' as *;
+
+.author_message,
+.contact_message {
+  max-width: rem(260px);
+  padding: rem(10px) rem(16px);
+  margin-bottom: rem(8px);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  font-size: rem(14px);
+}
+.author_message {
+  align-self: flex-end;
+  background-color: $lightGrey;
+}
+
+.contact_message {
+  align-self: flex-start;
+  border: 1px solid $lightGrey;
+}

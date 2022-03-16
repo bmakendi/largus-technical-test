@@ -31,7 +31,7 @@ const Home: FC = () => {
         ></meta>
       </Head>
       <Header homepage /> {/*MOVE HEADER IN A LAYOUT COMPONENT*/}
-      <div>
+      <main className='main_homepage'>
         {conversations.map(({ id, senderNickname, recipientNickname }) => {
           return (
             <Conversation
@@ -43,7 +43,7 @@ const Home: FC = () => {
             />
           );
         })}
-      </div>
+      </main>
     </>
   );
 };

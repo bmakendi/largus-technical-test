@@ -24,3 +24,20 @@ ul,
 ol {
   list-style: none;
 }
+
+:focus-visible {
+  outline: none;
+}
+
+.main_homepage {
+  min-height: 100vh;
+  padding: 4.0625rem 1rem 0; /* aligning messages at the start and leaving space for the header */
+}
+
+.main_messages {
+  overflow: hidden;
+  padding: 0 1rem 3.75rem; /* aligning messages at the end and leaving space for the input bar */
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+}
