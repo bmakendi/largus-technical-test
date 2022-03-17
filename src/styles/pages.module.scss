@@ -43,3 +43,28 @@
   color: $blue;
   font-weight: 500;
 }
+
+/* New conversation button */
+.icon_wrapper {
+  z-index: 1000;
+  width: rem(50px);
+  height: rem(50px);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba($color: $blue, $alpha: 0.8);
+  box-shadow: 3px 6px 6px $lightGrey;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-out;
+  &:hover {
+    transform: scale(0.99);
+    box-shadow: none;
+  }
+  svg {
+    color: #fff;
+  }
+}

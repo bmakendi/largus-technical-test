@@ -1,16 +1,19 @@
-import { FC, useContext, useEffect } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { getLoggedUserId } from '../utils/getLoggedUserId';
 import { useGetUser } from '../utils/hooks/user';
 import { useGetConversations } from '../utils/hooks/conversations';
 import { CurrentUserContext } from '../utils/context/user.context';
 
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import { Chat } from '@mui/icons-material';
 import Head from 'next/head';
+
 import Header from '../components/Header/Header';
 import Conversation from '../components/Conversation/Conversation';
+import Modal from '../components/Modal/Modal';
+import styles from '../styles/pages.module.scss';
 
 const Home: FC = () => {
+  const [modalOpened, setModalOpened] = useState(false);
   const loggedUser = getLoggedUserId();
   const userUrl: string = `http://localhost:3005/users/${loggedUser}`;
   const conversationsUrl: string = `http://localhost:3005/conversations/${loggedUser}`;
@@ -22,6 +25,10 @@ const Home: FC = () => {
   useEffect(() => {
     !userLoading && updateCurrentUser(user);
   });
+
+  const handleModal = () => {
+    setModalOpened(false);
+  };
 
   return (
     <>
@@ -55,7 +62,15 @@ const Home: FC = () => {
             );
           }
         )}
-        <AddCircleIcon className='btn__new-conv' />
+        <div
+          className={styles.icon_wrapper}
+          onClick={() => {
+            setModalOpened(true);
+          }}
+        >
+          <Chat />
+        </div>
+        {modalOpened && <Modal handleModal={handleModal} />}
       </main>
     </>
   );
