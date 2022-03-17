@@ -23,7 +23,18 @@ export const useGetMessages = (url: string) => {
     setLoading(false);
   }, [url]);
 
-  return { messages, isLoading, error };
+  const updateMessages = async (url: string) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setMessages(data);
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return { messages, isLoading, error, updateMessages };
 };
 
 export const useGetLastMessage = (url: string) => {

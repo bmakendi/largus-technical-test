@@ -4,6 +4,8 @@ import { useGetUser } from '../utils/hooks/user';
 import { useGetConversations } from '../utils/hooks/conversations';
 import { CurrentUserContext } from '../utils/context/user.context';
 
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 import Head from 'next/head';
 import Header from '../components/Header/Header';
 import Conversation from '../components/Conversation/Conversation';
@@ -53,6 +55,7 @@ const Home: FC = () => {
             );
           }
         )}
+        <AddCircleIcon className='btn__new-conv' />
       </main>
     </>
   );

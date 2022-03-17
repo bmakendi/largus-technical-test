@@ -5,17 +5,41 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: scroll;
 }
 
-.text_input {
-  input {
+.input_container {
+  width: 100%;
+  & > div {
+    width: 100%;
+  }
+  .text_input {
     position: fixed;
     bottom: 20px;
     left: 0;
     right: 0;
-    margin: 0 16px;
+    margin: 0 1rem;
+    height: rem(43px);
     padding: rem(10px) rem(16px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: 1px solid $lightGrey;
     border-radius: 20px;
+    input {
+      flex: 1;
+      border: none;
+    }
   }
+}
+
+.submit_message {
+  cursor: pointer;
+  color: $darkGrey;
+}
+
+.submit_message_enabled {
+  cursor: pointer;
+  color: $blue;
+  font-weight: 500;
 }
