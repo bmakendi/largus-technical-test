@@ -3,7 +3,7 @@
 
 .container {
   min-width: 0;
-  padding: rem(13px) 0;
+  padding: rem(13px) 1rem;
   display: flex;
   align-items: center;
   gap: rem(5px);
@@ -11,10 +11,14 @@
   &:hover {
     background-color: rgba($color: $headerBgColor, $alpha: 1);
   }
+  div {
+    min-width: 35px;
+  }
 }
 
 .text_container {
   max-width: rem(310px);
+  min-width: 0;
 }
 
 .upper_text {
@@ -36,4 +40,9 @@
 .message_date {
   color: $dateColor;
   font-size: rem(13px);
+}
+
+.picture {
+  min-width: 35px !important;
+  min-height: 35px !important;
 }

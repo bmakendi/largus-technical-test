@@ -31,7 +31,7 @@ ol {
 
 .main_homepage {
   min-height: 100vh;
-  padding: 4.0625rem 1rem 0; /* aligning messages at the start and leaving space for the header */
+  padding: 4.0625rem 0 0; /* aligning messages at the start and leaving space for the header */
 }
 
 .main_messages {

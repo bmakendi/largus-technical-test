@@ -1,21 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
+import { useGetUser } from '../../utils/hooks/user';
 import styles from './header.module.scss';
 
 interface HeaderProps {
   homepage?: boolean;
-  contactName?: string;
 }
 
-const Header = ({ homepage, contactName }: HeaderProps) => {
-  const [contact, setContact] = useState<string>(contactName);
+const Header = ({ homepage }: HeaderProps) => {
+  const [headerName, setHeaderName] = useState<string>('');
   const router = useRouter();
-  const { conv } = router.query;
-  if (contact !== contactName) setContact(contactName);
+  const contactId = router.query.contactId as string;
+  const userUrl: string =
+    contactId && `http://localhost:3005/users/${contactId}`;
+  const { user } = useGetUser(userUrl);
+
+  useEffect(() => {
+    contactId && user && setHeaderName(user.nickname);
+  }, [contactId, user]);
 
   return (
     <header className={styles.container}>
-      <p>{homepage ? 'Messages' : contact}</p>
+      <p>{homepage ? 'Messages' : headerName}</p>
     </header>
   );
 };

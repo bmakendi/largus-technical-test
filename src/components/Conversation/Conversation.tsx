@@ -9,30 +9,33 @@ interface ConversationProps {
   conversationId: number;
   currentUserName: string;
   senderName: string;
+  senderId: number;
   recipientName: string;
+  recipientId: number;
 }
 
 const Conversation = ({
   conversationId,
   currentUserName,
   senderName,
+  senderId,
   recipientName,
+  recipientId,
 }: ConversationProps) => {
   const url = `http://localhost:3005/messages/${conversationId}`;
   const { lastMessage, isLoading, error } = useGetLastMessage(url);
   const isSender = currentUserName === senderName; //boolean to know which name to display
+  const contactId = isSender ? recipientId : senderId;
   const date = useConvertTimeStamp(lastMessage?.timestamp);
 
-  console.log(lastMessage, isLoading, error, date);
-
   return (
-    <Link href={`/messages?conv=${conversationId}`}>
+    <Link href={`/messages?conv=${conversationId}&contactId=${contactId}`}>
       <a>
         <div className={styles.container}>
           <Image
             src={defaultPicture}
             alt='Photo de profil'
-            className='conversation_picture'
+            className={styles.picture}
             height={35}
             width={35}
             layout='fixed'

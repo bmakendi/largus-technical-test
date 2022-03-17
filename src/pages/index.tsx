@@ -32,17 +32,27 @@ const Home: FC = () => {
       </Head>
       <Header homepage /> {/*MOVE HEADER IN A LAYOUT COMPONENT*/}
       <main className='main_homepage'>
-        {conversations.map(({ id, senderNickname, recipientNickname }) => {
-          return (
-            <Conversation
-              key={id}
-              conversationId={id}
-              currentUserName={currentUser?.nickname}
-              senderName={senderNickname}
-              recipientName={recipientNickname}
-            />
-          );
-        })}
+        {conversations.map(
+          ({
+            id,
+            senderNickname,
+            recipientNickname,
+            senderId,
+            recipientId,
+          }) => {
+            return (
+              <Conversation
+                key={id}
+                conversationId={id}
+                currentUserName={currentUser?.nickname}
+                senderName={senderNickname}
+                senderId={senderId}
+                recipientName={recipientNickname}
+                recipientId={recipientId}
+              />
+            );
+          }
+        )}
       </main>
     </>
   );
