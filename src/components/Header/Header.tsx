@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { useGetUser } from '../../utils/hooks/user';
 import styles from './header.module.scss';
+import Link from 'next/dist/client/link';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 interface HeaderProps {
   homepage?: boolean;
@@ -21,7 +23,18 @@ const Header = ({ homepage }: HeaderProps) => {
 
   return (
     <header className={styles.container}>
-      <p>{homepage ? 'Messages' : headerName}</p>
+      {homepage ? (
+        <p>Messages</p>
+      ) : (
+        <div className={styles.contact_back}>
+          <Link href='/'>
+            <a>
+              <ArrowBackIcon />
+            </a>
+          </Link>
+          <p>{headerName}</p>
+        </div>
+      )}
     </header>
   );
 };

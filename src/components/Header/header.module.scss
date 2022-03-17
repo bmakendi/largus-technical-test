@@ -17,3 +17,13 @@
     font-weight: 500;
   }
 }
+
+.contact_back {
+  display: flex;
+  align-items: center;
+  gap: rem(10px);
+  a {
+    display: flex;
+    align-items: center;
+  }
+}
