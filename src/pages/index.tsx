@@ -32,7 +32,7 @@ const Home: FC = () => {
           content="L'application de messagerie de Leboncoin, retrouvez ici tous vos messages !"
         ></meta>
       </Head>
-      <Header homepage /> {/*MOVE HEADER IN A LAYOUT COMPONENT*/}
+      <Header homepage />
       <main className='main_homepage'>
         {conversations.map(
           ({

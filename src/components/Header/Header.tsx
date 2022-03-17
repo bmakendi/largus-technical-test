@@ -10,16 +10,11 @@ interface HeaderProps {
 }
 
 const Header = ({ homepage }: HeaderProps) => {
-  const [headerName, setHeaderName] = useState<string>('');
   const router = useRouter();
   const contactId = router.query.contactId as string;
   const userUrl: string =
     contactId && `http://localhost:3005/users/${contactId}`;
   const { user } = useGetUser(userUrl);
-
-  useEffect(() => {
-    contactId && user && setHeaderName(user.nickname);
-  }, [contactId, user]);
 
   return (
     <header className={styles.container}>
@@ -32,7 +27,7 @@ const Header = ({ homepage }: HeaderProps) => {
               <ArrowBackIcon />
             </a>
           </Link>
-          <p>{headerName}</p>
+          <p>{user?.nickname}</p>
         </div>
       )}
     </header>

@@ -54,7 +54,14 @@ const Messages = () => {
       <main className='main_messages'>
         <div className={styles.messages_container}>
           {messages.map(({ id, authorId, body }) => {
-            return <Message key={id} authorId={authorId} body={body} />;
+            return (
+              <Message
+                key={id}
+                authorId={authorId}
+                body={body}
+                messageId={id}
+              />
+            );
           })}
         </div>
         <div className={styles.input_container}>

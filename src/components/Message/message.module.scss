@@ -3,6 +3,7 @@
 
 .author_message,
 .contact_message {
+  position: relative;
   max-width: rem(260px);
   padding: rem(10px) rem(16px);
   margin-bottom: rem(8px);
@@ -10,13 +11,42 @@
   align-items: center;
   border-radius: 20px;
   font-size: rem(14px);
+  button {
+    position: absolute;
+    color: $darkGrey;
+  }
 }
 .author_message {
   align-self: flex-end;
   background-color: $lightGrey;
+  button {
+    left: -40px;
+  }
 }
 
 .contact_message {
   align-self: flex-start;
   border: 1px solid $lightGrey;
+  button {
+    right: -40px;
+  }
+}
+
+.delete_author,
+.delete_recipient {
+  z-index: 1000;
+  position: absolute;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: rgba($color: #000, $alpha: 0.8);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  border: 1px solid $darkGrey;
+}
+
+.delete_author {
+  left: -70px;
+}
+.delete_recipient {
+  right: -60px;
 }
