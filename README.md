@@ -1,71 +1,80 @@
 # Context :
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+As part of a technical assessement for l'Argus, I had to create the interface leboncoin users will use to consult their messages and interact with others.
 
-Your job is to create the interface to consult those messages.
 The interface needs to work on both desktop & mobile devices.
+<br/>
+<br/>
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+# Thought process :
 
-# Exercice :
+What I first needed to do was :
 
-- Display a list of all the conversations
-- Allow the user to select a conversation
-  - Inside the conversation, there is a list of all the messages between these two users.
-  - As a user, you can type and send new messages in this conversation
+- Displaying a list of all the conversations
+- Allowing the user to select a conversation
+  - Inside the conversation, there is a list of all the messages between the user and their contact.
+  - The user needs to be able to type and send new messagees.
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+**Having read the README, the API documentation and finally reviewing the code, I started taking some notes to have a plan.**
+<br/>
+<br/>
 
-### Sketches :
+### Messages and conversations :
 
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
+I decided to first retrieve messages and conversations, by simply using the API and the documentation I was given. You can also find it here :<br/>
+[https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
+<br/>
+<br/>
 
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
+### What about the design :
 
-![](./sketches/list-mobile.jpg)
+Having the data stored, I needed to display it on screen, and had to get my imagination working as I didn't have any mockup to work with. I looked at some messenger applications, Instagram, Whatsapp, even Leconcoin's, and then I decided to go for a design and colors people would feel at home with.<br/>
 
-Desktop list :
+To implement it, I used Sass (scss) because so I could make use of variables and functions (especially a px to rem converter).<br/>
+I also used Material UI for the input and some buttons, to have components and animations ready.
+<br/>
 
-![](./sketches/list-desktop.jpg)
+I also implemented loading animations, so the user doesn't feel the loading time or wonders what's wrong with his app and why isn't it working correctly.
+<br/>
+<br/>
 
-Mobile conversation :
+## Creating and deleting :
 
-![](./sketches/conv-mobile.jpg)
+As I said earlier, the user needs to be able to send messages. So while implementing it, it didn't add them correctly to the database.
+<br/>
+<br/>
 
-Desktop conversation :
+### Creating new messages :
 
-![](./sketches/conv-desktop.jpg)
+Properties where missing from the newly created message, so I looked at the documentation again and I was sending the data correctly. So I took the liberty of adding a middleware in the messages.js file, that will only add a message if every property we need to display a message were received.<br/>
 
-</details>
+This being done, messages were now being able of being sent and displayed.
+<br/>
+<br/>
 
-### API :
+### Deleting messages :
 
-You can find the API swagger file in `docs/api-swagger.yaml`.
+I also added the possibility to delete messages, sadly I couldn't update the backend so they won't be deleted, but the interface is there, by clicking or hovering a message, you can choose to delete it.
+<br/>
+<br/>
 
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
+## What about conversations :
+
+Same thing as messages, the interface is there, but the backend isn't ready yet so while you can create new conversations, they won't be displayed.
+<br/>
+<br/>
+
+## Error pages :
+
+Whenever the user loses himself in the url, or if the server is malfunctionning, the user gets redirected to an error page. They will be welcomed by a message and a button asking them to go back to safety (the homepage).
+<br/>
+<br/>
 
 ---
 
-## Bonus 1 :
+## Contact :
 
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
-
-## Bonus 2 :
-
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
-
-## Do you want to make the app even better ?
-
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
-
-If you are out of ideas, here are some thoughts :
-
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
-
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
-
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+If you have any more questions, feel free to contact me !<br/>
+Website: [click here ! it's pretty](https://bryanmakendi.com)<br/>
+Mail : bryan.makendi@gmail.com<br/>
+LinkedIn : [Bryan Makendi](https://www.linkedin.com/in/bryan-makendi/)<br/>

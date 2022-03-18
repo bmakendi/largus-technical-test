@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import { useGetLastMessage } from '../../utils/hooks/messages';
 import { useConvertTimeStamp } from '../../utils/hooks/helper';
 import Image from 'next/image';
@@ -22,11 +23,14 @@ const Conversation = ({
   recipientName,
   recipientId,
 }: ConversationProps) => {
+  const router = useRouter();
   const url = `http://localhost:3005/messages/${conversationId}`;
-  const { lastMessage, isLoading, error } = useGetLastMessage(url);
+  const { lastMessage, error } = useGetLastMessage(url);
   const isSender = currentUserName === senderName; //boolean to know which name to display
   const contactId = isSender ? recipientId : senderId;
   const date = useConvertTimeStamp(lastMessage?.timestamp);
+
+  if (error) router.push('/500');
 
   return (
     <Link href={`/messages?conv=${conversationId}&contactId=${contactId}`}>

@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/dist/client/router';
 import { getLoggedUserId } from '../utils/getLoggedUserId';
 import { useGetUser } from '../utils/hooks/user';
 import { useGetConversations } from '../utils/hooks/conversations';
@@ -14,6 +15,7 @@ import LoadingSkeleton from '../components/Loading/LoadingSkeleton';
 import styles from '../styles/pages.module.scss';
 
 const Home: FC = () => {
+  const router = useRouter();
   const [modalOpened, setModalOpened] = useState(false);
   const loggedUser = getLoggedUserId();
   const userUrl: string = `http://localhost:3005/users/${loggedUser}`;
@@ -30,6 +32,8 @@ const Home: FC = () => {
   const handleModal = () => {
     setModalOpened(false);
   };
+
+  if (error) router.push('/500');
 
   return (
     <>

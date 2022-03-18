@@ -1,8 +1,6 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
-import { CurrentUserContext } from '../utils/context/user.context';
 import { useGetMessages } from '../utils/hooks/messages';
-import { useGetConversation } from '../utils/hooks/conversations';
 import { getLoggedUserId } from '../utils/getLoggedUserId';
 
 import { InputAdornment, FormControl } from '@mui/material';
@@ -15,14 +13,15 @@ import styles from '../styles/pages.module.scss';
 const Messages = () => {
   const loggedUser = getLoggedUserId();
   const [inputMessage, setInputMessage] = useState('');
-  const { currentUser } = useContext(CurrentUserContext);
   const router = useRouter();
   const conv = router.query.conv as string;
   const messageUrl = `http://localhost:3005/messages/${conv}`;
-  const conversationUrl = `http://localhost:3005/conversations/${currentUser?.id}`;
   const { messages, isLoading, error, updateMessages } =
     useGetMessages(messageUrl);
 
+  /**
+   * Submitting a new message when it's not empty.
+   */
   const handleSubmit = async () => {
     if (inputMessage !== '') {
       const timestamp = parseInt(Date.now().toString().substring(0, 10));
@@ -48,6 +47,8 @@ const Messages = () => {
       }
     }
   };
+
+  if (error) router.push('/500');
 
   return (
     <>

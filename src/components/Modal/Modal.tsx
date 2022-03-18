@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useRouter } from 'next/dist/client/router';
 import { useGetUsers } from '../../utils/hooks/user';
 import { CurrentUserContext } from '../../utils/context/user.context';
 import { User } from '../../types/user';
@@ -12,6 +13,7 @@ interface ModalProps {
 }
 
 const Modal = ({ handleModal, updateConversations }: ModalProps) => {
+  const router = useRouter();
   const { currentUser } = useContext(CurrentUserContext);
   const [filter, setFilter] = useState('');
   const { users, isLoading, error } = useGetUsers(
@@ -48,6 +50,8 @@ const Modal = ({ handleModal, updateConversations }: ModalProps) => {
       handleModal();
     }
   };
+
+  if (error) router.push('/500');
 
   return (
     <>
