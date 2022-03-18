@@ -1,3 +1,16 @@
+# How to use :
+
+Clone the project and execute the following commands :
+<br/>
+
+```bash
+# to start the server on port 3005
+npm run start-server
+# then to start the client
+npm run dev
+# then go to the indicated link, it should be on port 3000
+```
+
 # Context :
 
 As part of a technical assessement for l'Argus, I had to create the interface leboncoin users will use to consult their messages and interact with others.
