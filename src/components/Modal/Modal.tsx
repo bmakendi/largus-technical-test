@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useGetUsers } from '../../utils/hooks/user';
 import CloseIcon from '@mui/icons-material/Close';
+import LoadingCircle from '../Loading/LoadingCircle';
 import styles from './modal.module.scss';
 
 interface ModalProps {
@@ -30,19 +31,25 @@ const Modal = ({ handleModal }: ModalProps) => {
           }}
         />
         <div className={styles.contacts}>
-          {users
-            .filter((contact) => {
-              if (filter === '') return contact;
-              if (contact.nickname.toLowerCase().includes(filter.toLowerCase()))
-                return contact;
-            })
-            .map(({ id, nickname }) => {
-              return (
-                <p key={id} className={styles.contact}>
-                  {nickname}
-                </p>
-              );
-            })}
+          {isLoading ? (
+            <LoadingCircle />
+          ) : (
+            users
+              .filter((contact) => {
+                if (filter === '') return contact;
+                if (
+                  contact.nickname.toLowerCase().includes(filter.toLowerCase())
+                )
+                  return contact;
+              })
+              .map(({ id, nickname }) => {
+                return (
+                  <p key={id} className={styles.contact}>
+                    {nickname}
+                  </p>
+                );
+              })
+          )}
         </div>
       </div>
     </>

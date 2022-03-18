@@ -15,10 +15,11 @@ export const useGetUsers = (url: string) => {
         setUsers(data);
       } catch {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-    setLoading(false);
   }, [url]);
 
   return { users, isLoading, error };
@@ -39,10 +40,11 @@ export const useGetUser = (url: string) => {
       } catch (error) {
         console.log(error);
         setError(true);
+      } finally {
+        setUserLoading(false);
       }
     };
     fetchData();
-    setUserLoading(false);
   }, [url]);
 
   return { user, userLoading, error };

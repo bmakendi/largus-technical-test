@@ -10,6 +10,7 @@ import Head from 'next/head';
 import Header from '../components/Header/Header';
 import Conversation from '../components/Conversation/Conversation';
 import Modal from '../components/Modal/Modal';
+import LoadingSkeleton from '../components/Loading/LoadingSkeleton';
 import styles from '../styles/pages.module.scss';
 
 const Home: FC = () => {
@@ -41,26 +42,30 @@ const Home: FC = () => {
       </Head>
       <Header homepage />
       <main className='main_homepage'>
-        {conversations.map(
-          ({
-            id,
-            senderNickname,
-            recipientNickname,
-            senderId,
-            recipientId,
-          }) => {
-            return (
-              <Conversation
-                key={id}
-                conversationId={id}
-                currentUserName={currentUser?.nickname}
-                senderName={senderNickname}
-                senderId={senderId}
-                recipientName={recipientNickname}
-                recipientId={recipientId}
-              />
-            );
-          }
+        {isLoading ? (
+          <LoadingSkeleton />
+        ) : (
+          conversations.map(
+            ({
+              id,
+              senderNickname,
+              recipientNickname,
+              senderId,
+              recipientId,
+            }) => {
+              return (
+                <Conversation
+                  key={id}
+                  conversationId={id}
+                  currentUserName={currentUser?.nickname}
+                  senderName={senderNickname}
+                  senderId={senderId}
+                  recipientName={recipientNickname}
+                  recipientId={recipientId}
+                />
+              );
+            }
+          )
         )}
         <div
           className={styles.icon_wrapper}

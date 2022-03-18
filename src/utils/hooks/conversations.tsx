@@ -17,10 +17,11 @@ export const useGetConversations = (url: string) => {
         setConversations(data);
       } catch {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-    setLoading(false);
   }, [url]);
 
   return { conversations, isLoading, error };
@@ -45,10 +46,11 @@ export const useGetConversation = (url: string, id: number) => {
         });
       } catch {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-    setLoading(false);
   }, [url, id]);
 
   return { conversation, isLoading, error };

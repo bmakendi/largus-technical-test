@@ -17,10 +17,11 @@ export const useGetMessages = (url: string) => {
         setMessages(data);
       } catch {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-    setLoading(false);
   }, [url]);
 
   const updateMessages = async (url: string) => {
@@ -51,10 +52,11 @@ export const useGetLastMessage = (url: string) => {
         setLastMessage(data[data?.length - 1]);
       } catch {
         setError(true);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-    setLoading(false);
   }, [url]);
 
   return { lastMessage, isLoading, error };

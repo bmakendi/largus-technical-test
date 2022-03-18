@@ -9,6 +9,7 @@ import { InputAdornment, FormControl } from '@mui/material';
 import InputUnstyled from '@mui/base/InputUnstyled';
 import Header from '../components/Header/Header';
 import Message from '../components/Message/Message';
+import LoadingCirle from '../components/Loading/LoadingCircle';
 import styles from '../styles/pages.module.scss';
 
 const Messages = () => {
@@ -53,16 +54,20 @@ const Messages = () => {
       <Header />
       <main className='main_messages'>
         <div className={styles.messages_container}>
-          {messages.map(({ id, authorId, body }) => {
-            return (
-              <Message
-                key={id}
-                authorId={authorId}
-                body={body}
-                messageId={id}
-              />
-            );
-          })}
+          {isLoading ? (
+            <LoadingCirle />
+          ) : (
+            messages.map(({ id, authorId, body }) => {
+              return (
+                <Message
+                  key={id}
+                  authorId={authorId}
+                  body={body}
+                  messageId={id}
+                />
+              );
+            })
+          )}
         </div>
         <div className={styles.input_container}>
           <FormControl>
