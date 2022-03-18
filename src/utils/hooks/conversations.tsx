@@ -24,7 +24,18 @@ export const useGetConversations = (url: string) => {
     fetchData();
   }, [url]);
 
-  return { conversations, isLoading, error };
+  const updateConversations = async (url: string) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setConversations(data);
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return { conversations, isLoading, error, updateConversations };
 };
 
 export const useGetConversation = (url: string, id: number) => {

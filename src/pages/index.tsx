@@ -20,7 +20,7 @@ const Home: FC = () => {
   const conversationsUrl: string = `http://localhost:3005/conversations/${loggedUser}`;
   const { user, userLoading } = useGetUser(userUrl);
   const { currentUser, updateCurrentUser } = useContext(CurrentUserContext);
-  const { conversations, isLoading, error } =
+  const { conversations, isLoading, error, updateConversations } =
     useGetConversations(conversationsUrl);
 
   useEffect(() => {
@@ -75,7 +75,12 @@ const Home: FC = () => {
         >
           <Chat />
         </div>
-        {modalOpened && <Modal handleModal={handleModal} />}
+        {modalOpened && (
+          <Modal
+            handleModal={handleModal}
+            updateConversations={updateConversations}
+          />
+        )}
       </main>
     </>
   );
